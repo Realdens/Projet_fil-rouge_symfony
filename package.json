@@ -23,5 +23,8 @@
     },
     "dependencies": {
         "yarn": "^1.22.18"
+    },
+    "engines": {
+        "node": "16.15.1"
     }
 }
