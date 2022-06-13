@@ -6,70 +6,73 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Amazing Sciences{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        <link href="{{ asset('Amazing/styles.css') }}" rel="stylesheet" />
+        
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            
+           {{ encore_entry_link_tags('app') }} 
         {% endblock %}
 
         {% block javascripts %}
-            
+           {{ encore_entry_script_tags('app') }} 
         {% endblock %}
     </head>
-    <body>
+    <body class="bg-orange-300">
         <!--NAVIGATION-->
-        <header>
-            <h1>amazing Sciences</h1>
-            <nav>
-                <ul class="menu">
+        <header class="bg-blue-800 mb-2 pt-6 pb-6">
+            <div class="flex justify-center text-white text-xl pb-5">
+            amazing Sciences
+            </div>
+            <nav class="">
+                <ul class="flex flex-row justify-evenly text-teal-400 text-base">
                     <li><a href="#">Accueil</a></li>
                     <li><a href="#">Actualités</a></li>
                     <li><a href="#">Archives</a></li>
                     <li><a href="#">Forum</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Contact</a></li>                    
                 </ul>
             </nav>
+                       
         </header>
 
         {% block body %}{% endblock %}
 
         <!-- FOOTER -->
-        <footer>
-            <div class="bloc Informations">
-                <h3>Informations du site</h3>
-                <ul class="footer">
+        <footer class="bg-blue-800 flex flex-wrap mt-2 pt-5 pb-5">            
+            <div class="bloc-Informations w-full pb-8 xl:w-1/4 md:w-1/2 md:pb-8 flex flex-col items-center">
+                <h3 class="text-white">Informations</h3>
+                <ul class="text-teal-400 flex flex-col items-center">
                     <li><a href="#">A propos de nous</a></li>
                     <li><a href="#">Annonceurs</a></li>
                     <li><a href="#">Donées personnelles</a></li>
                     <li><a href="#">Mentions légales</a></li>
                 </ul>
             </div>
-            <div class="bloc Services">
-                <h3>Nos services</h3>
-                <ul class="footer">
+            <div class="bloc-Services w-full pb-8 xl:w-1/4 md:w-1/2 flex flex-col items-center">
+                <h3 class="text-white">Nos services</h3>
+                <ul class="text-teal-400 flex flex-col items-center">
                     <li><a href="#">Boutique</a></li>
                     <li><a href="#">Newsletter</a></li>
                     <li><a href="#">Infos salons</a></li>
                     <li><a href="#">Téléchargements</a></li>
                 </ul>
             </div>
-            <div class="bloc Partager">
-                <h3>Partager</h3>
-                <ul class="footer">
+            <div class="bloc-Partager w-full pb-8 xl:w-1/4 md:w-1/2 flex flex-col items-center">
+                <h3 class="text-white">Partager</h3>
+                <ul class="text-teal-400 flex flex-col items-center">
                     <li><a href="#">Forum</a></li>
                     <li><a href="#">Blogs</a></li>
                     <li><a href="#">Livre d'or</a></li>
                     <li><a href="#">Ailleurs sur le web</a></li>
                 </ul>
             </div>
-            <div class="Bloc Reseaux">
-                <h3>Réseaux sociaux</h3>
-                <ul class="footer icones">
-                    <li><a href="#"><img src="{{ asset('Amazing/images/Icons/Facebook-gris30px.png') }}">facebook</a></li>
-                    <li><a href="#"><img src="{{ asset('Amazing/images/Icons/Twitter-gris30px.png') }}">twitter</a></li>
-                    <li><a href="#"><img src="{{ asset('Amazing/images/Icons/Youtube-gris30px.png') }}">youtube</a></li>
+            <div class="bloc-reseaux text-white w-full xl:w-1/4 md:w-1/2 flex flex-col items-center">
+                <h3 class="pb-2">Réseaux sociaux</h3>
+                <ul class="flex flex-col">
+                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Facebook-gris30px.png') }}" class="mr-2">facebook</a></li>
+                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Twitter-gris30px.png') }}" class="mr-2">twitter</a></li>
+                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Youtube-gris30px.png') }}" class="mr-2">youtube</a></li>
                 </ul>
-            </div>
+            </div>            
         </footer>
     </body>
 </html>
