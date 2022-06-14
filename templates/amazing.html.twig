@@ -18,7 +18,7 @@
     </head>
     <body class="bg-orange-300">
         <!--NAVIGATION-->
-        <header class="bg-blue-800 mb-2 pt-6 pb-6">
+        <header class="bg-gradient-to-b from-blue-500 to-blue-900 mb-2 pt-6 pb-6">
             <div class="flex justify-center text-white text-xl pb-5">
             amazing Sciences
             </div>
@@ -28,7 +28,18 @@
                     <li><a href="#">Actualités</a></li>
                     <li><a href="#">Archives</a></li>
                     <li><a href="#">Forum</a></li>
-                    <li><a href="#">Contact</a></li>                    
+                    {% if not is_granted("ROLE_USER") %}
+                    <li class="">
+                        <a href="{{ path('app_register') }}">S'inscrire</a>
+                    </li>
+                    <li class="">
+                        <a href="{{ path('app_login') }}">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="">
+                        <a href="{{ path('app_logout') }}">Logout</a>
+                    </li>
+                    {% endif %}                    
                 </ul>
             </nav>
                        
