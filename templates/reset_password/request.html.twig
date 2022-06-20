@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'amazing.html.twig' %}
 
 {% block title %}Reset your password{% endblock %}
 
@@ -6,17 +6,25 @@
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <h1>Reset your password</h1>
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address and we will send you a
-                link to reset your password.
-            </small>
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div>
+                <h1 class="mt-6 text-center text-3xl font-extrabold text-blue-800">Réinitialisez votre mot de passe</h1>
+            </div>
+
+            {{ form_start(requestForm) }}
+                {{ form_row(requestForm.email) }}
+                <div>
+                    <small>
+                        Renseignez votre adresse mail, vous recevrez un lien pour réinitialiser votre mot de passe.
+                    </small>
+                </div>
+
+                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Recevoir le mail de réinitialisation
+                </button>
+            {{ form_end(requestForm) }}
         </div>
-
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+    </div>
 {% endblock %}
