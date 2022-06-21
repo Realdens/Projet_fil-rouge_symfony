@@ -1,0 +1,38 @@
+{% extends 'Amazing.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+
+    {% for post in posts %}
+
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-5">
+                <div class="md:flex">
+                    <div class="md:shrink-0">
+                        <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ post.image }}" alt="">
+                    </div>
+                    <div class="p-8">
+                        <a href="{{ path('post_view', {slug: post.slug}) }}">
+                            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                            {{ post.title }}
+                            </div>
+                            <p class="mt-2 text-slate-500">
+                            {{ post.content }}
+                            </p>
+                        </a>
+                        <div class="">
+                            Rédigé par
+                            {{ post.user.email }}
+                            
+                            - classé dans {{ post.category.name }}
+                        </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- Divider-->
+        <hr class="my-4" />
+
+    {% endfor %}
+
+{% endblock %}

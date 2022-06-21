@@ -24,9 +24,9 @@
             </div>
             <nav class="">
                 <ul class="flex flex-row justify-evenly text-teal-400 text-base">
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="{{ path('accueil') }}">Accueil</a></li>
                     <li><a href="#">Actualités</a></li>
-                    <li><a href="#">Archives</a></li>
+                    <li><a href="{{ path('app_post') }}">Articles</a></li>
                     <li><a href="#">Forum</a></li>
                     {% if not is_granted("ROLE_USER") %}
                     <li class="">
