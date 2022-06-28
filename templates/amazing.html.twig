@@ -12,32 +12,58 @@
            {{ encore_entry_link_tags('app') }} 
         {% endblock %}
 
+        <link rel="stylesheet" href="{{ asset('Amazing/style.css') }}">
+
         {% block javascripts %}
            {{ encore_entry_script_tags('app') }} 
         {% endblock %}
     </head>
-    <body class="bg-orange-300">
+    <body class="bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400">
         <!--NAVIGATION-->
-        <header class="bg-gradient-to-b from-blue-500 to-blue-900 mb-2 pt-6 pb-6">
-            <div class="flex justify-center text-white text-xl pb-5">
+        <header class="bg-gradient-to-b from-blue-500 to-blue-900 mb-2 pt-6 pb-6 sticky top-0 z-10 h-[120px]">
+            <div class="flex justify-center text-white font-bold text-3xl pb-5">
             amazing Sciences
             </div>
             <nav class="">
                 <ul class="flex flex-row justify-evenly text-teal-400 text-base">
-                    <li><a href="{{ path('accueil') }}">Accueil</a></li>
-                    <li><a href="#">Actualités</a></li>
-                    <li><a href="{{ path('app_post') }}">Articles</a></li>
-                    <li><a href="#">Forum</a></li>
-                    {% if not is_granted("ROLE_USER") %}
-                    <li class="">
-                        <a href="{{ path('app_register') }}">S'inscrire</a>
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="{{ path('accueil') }}">Accueil</a>
+                        </button>
                     </li>
-                    <li class="">
-                        <a href="{{ path('app_login') }}">Login</a>
+                    <!--
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="#">Actualités</a>
+                        </button>
+                    </li>
+                    -->
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="{{ path('app_post') }}">Articles</a>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="#">Forum</a>
+                        </button>
+                    </li>
+                    {% if not is_granted("ROLE_USER") %}
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="{{ path('app_register') }}">S'inscrire</a>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="{{ path('app_login') }}">Login</a>
+                        </button>
                     </li>
                     {% else %}
-                    <li class="">
-                        <a href="{{ path('app_logout') }}">Logout</a>
+                    <li>
+                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                            <a href="{{ path('app_logout') }}">Logout</a>
+                        </button>
                     </li>
                     {% endif %}                    
                 </ul>
@@ -45,7 +71,12 @@
                        
         </header>
 
-        {% block body %}{% endblock %}
+        <!-- Hauteur de la page - (header + footer) -->
+        <main class="min-h-[calc(100vh-328px)]">
+
+            {% block body %}{% endblock %}
+
+        </main>
 
         <!-- FOOTER -->
         <footer class="bg-blue-800 flex flex-wrap mt-2 pt-5 pb-5">            

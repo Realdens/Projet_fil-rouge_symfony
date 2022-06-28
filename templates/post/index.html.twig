@@ -6,32 +6,32 @@
 
     {% for post in posts %}
 
-        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-5">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-5 mt-8">
                 <div class="md:flex">
                     <div class="md:shrink-0">
                         <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ post.image }}" alt="">
                     </div>
                     <div class="p-8">
                         <a href="{{ path('post_view', {slug: post.slug}) }}">
-                            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                            <div class="uppercase tracking-wide text-xl text-blue-800 font-semibold">
                             {{ post.title }}
                             </div>
-                            <p class="mt-2 text-slate-500">
+                            <p class="mt-2 text-slate-700">
                             {{ post.content | u.truncate(150, '...') | raw }}
                             </p>
                         </a>
-                        <div class="">
+                        <div class="text-slate-500">
                             Rédigé par
                             {{ post.user.email }}
-                            
+                            le {{ post.createdAt | date('d/m/Y') }}
+                            à {{ post.createdAt | date('H:i') }}
                             - classé dans {{ post.category.name }}
                         </div>
                 </div>
                 </div>
             </div>
 
-        <!-- Divider-->
-        <hr class="my-4" />
+        
 
     {% endfor %}
 
