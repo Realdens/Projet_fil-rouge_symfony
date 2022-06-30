@@ -49,13 +49,13 @@ class PostRepository extends ServiceEntityRepository
 
     public function findLastPosts(int $nb = 5)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.active = :active')
-            ->setParameter('active', true)
-            ->orderBy('p.createdAt', 'DESC')
-            ->setMaxResults($nb)
-            ->getQuery()
-            ->getResult()
+        return $this->createQueryBuilder('p') // le query builder permet à doctrine de générer le sql correspondant
+            ->andWhere('p.active = :active') //where est à voir comme un filtre => en sql : where p.active = true
+            ->setParameter('active', true) //le setarameter sécurise le paramètre active  => paramètre nommé
+            ->orderBy('p.createdAt', 'DESC') //tri sur la colonne created_at par ordre décroissant
+            ->setMaxResults($nb) //en sql correspond à la limite
+            ->getQuery() //exécute la requête
+            ->getResult() //récupère les données
         ;
     }
 

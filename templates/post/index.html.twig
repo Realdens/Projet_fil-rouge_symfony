@@ -17,12 +17,12 @@
                             {{ post.title }}
                             </div>
                             <p class="mt-2 text-slate-700">
-                            {{ post.content | u.truncate(150, '...') | raw }}
+                            {{ post.content | u.truncate(150, '...') | raw }}  {# | raw , |date, etc sont des filtres trwig #}
                             </p>
                         </a>
                         <div class="text-slate-500">
                             Rédigé par
-                            {{ post.user.email }}
+                            {{ post.user.email }} {# on peut ici faire réf à user ET email grâce aux relations entre entités #}
                             le {{ post.createdAt | date('d/m/Y') }}
                             à {{ post.createdAt | date('H:i') }}
                             - classé dans {{ post.category.name }}
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-        
+     {#  techniquement la vue correspond à "reponse" (cf controller) #}   
 
     {% endfor %}
 
