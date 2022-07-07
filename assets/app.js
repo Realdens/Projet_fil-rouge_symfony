@@ -10,3 +10,6 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+
+//plugin Tailwind tw-elements
+import 'tw-elements';

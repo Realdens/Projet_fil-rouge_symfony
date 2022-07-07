@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Post;
 use App\Entity\Category;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Category>
@@ -45,6 +46,29 @@ class CategoryRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    // /**
+    // * @return Category[] Returns an array of Category objects
+    // */
+    
+    public function findPostsByCategory()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.name', 'p.title')
+            ->innerJoin('c.posts', 'p', 'WITH', 'c.id = p.category')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        /*return $this->createQueryBuilder('c')
+        ->select('name', 'title')
+        ->from('category','c')
+        ->innerJoin('c', 'post', 'p', 'c.id = p.category_id')
+        ->getQuery()
+        ->getResult()
+    ; */
+
     }
 
     // /**
