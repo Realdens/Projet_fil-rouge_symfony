@@ -1,0 +1,182 @@
+{% extends 'amazing.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block body %}
+
+<div class="accordion max-w-md mx-auto md:max-w-2xl" id="accordionExample">
+  <div class="accordion-item bg-gradient-to-r from-blue-500 to-blue-900 border border-gray-200"> 
+    {% for category in categories %}  
+        <div class="accordion-header mx-auto text-center mb-0" id="heading{{ category.id }}">
+          <button class="
+              accordion-button
+              collapsed
+              relative
+              flex
+              items-center
+              bg-blue-500
+              rounded-md
+              text-2xl
+              py-4
+              pl-10
+              mb-10
+              w-full
+              shadow-3xl
+              hover:bg-blue-800 hover:text-white" 
+              type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ category.id }}" aria-controls="collapse{{ category.id }}">
+              {{ category.name }}
+          </button>
+        </div>
+        <div id="collapse{{ category.id }}" class="accordion-collapse collapse " aria-labelledby="heading{{ category.id }}"
+        data-bs-parent="#accordionExample">
+            {% for post in category.posts %}
+                <ul>
+                    <div class="accordion-body py-4 px-5">
+                        <li>
+                            <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-10 mt-8">
+                                <div class="md:flex">
+                                    <div class="md:shrink-0">
+                                        <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ post.image }}" alt="">
+                                    </div>
+                                    <div class="p-8">
+                                        <a href="{{ path('post_view', {slug: post.slug}) }}">
+                                            <div class="uppercase tracking-wide text-xl text-blue-800 font-semibold">
+                                            {{ post.title }}
+                                            </div>
+                                            <p class="mt-2 text-slate-700">
+                                            {{ post.content | u.truncate(150, '...') | raw }}  {# | raw , |date, etc sont des filtres twig #}
+                                            </p>
+                                        </a>
+                                    <div class="text-slate-500">
+                                        Rédigé par
+                                        {{ post.user.email }} {# on peut ici faire réf à user ET email grâce aux relations entre entités #}
+                                        le {{ post.createdAt | date('d/m/Y') }}
+                                        à {{ post.createdAt | date('H:i') }}
+                                        - classé dans {{ post.category.name }}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            {% endfor %}
+        </div>
+    {% endfor %}
+  </div>
+
+  {#
+  <div class="accordion-item bg-white border border-gray-200">
+    <h2 class="accordion-header mb-0" id="headingTwo">
+      <button class="
+        accordion-button
+        collapsed
+        relative
+        flex
+        items-center
+        w-full
+        py-4
+        px-5
+        text-base text-gray-800 text-left
+        bg-white
+        border-0
+        rounded-none
+        transition
+        focus:outline-none
+      " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+        aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body py-4 px-5">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item bg-white border border-gray-200">
+    <h2 class="accordion-header mb-0" id="headingThree">
+      <button class="
+        accordion-button
+        collapsed
+        relative
+        flex
+        items-center
+        w-full
+        py-4
+        px-5
+        text-base text-gray-800 text-left
+        bg-white
+        border-0
+        rounded-none
+        transition
+        focus:outline-none
+      " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+        aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body py-4 px-5">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+        our default variables. It's also worth noting that just about any HTML can go within
+        the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+#}
+
+{#
+    <div class="text-white text-center text-3xl bg-gradient-to-r from-blue-500 to-blue-900 rounded-md font-semibold py-2 max-w-md mx-auto md:max-w-2xl mb-10 sticky top-[130px]">
+        <h1>Liste des catégories</h1>
+    </div>
+
+    {% for category in categories %}
+    <details>
+        <summary class="bg-white rounded-md mx-auto w-2/3 md:max-w-2xl mb-10 py-4 pl-4 shadow-2xl hover:bg-blue-800 hover:text-white">
+                {{ category.name }}
+        </summary>
+        
+        <ul>
+            {% for post in category.posts %}
+            <li>
+                <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-10 mt-8">
+                    <div class="md:flex">
+                        <div class="md:shrink-0">
+                            <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ post.image }}" alt="">
+                        </div>
+                        <div class="p-8">
+                            <a href="{{ path('post_view', {slug: post.slug}) }}">
+                                <div class="uppercase tracking-wide text-xl text-blue-800 font-semibold">
+                                {{ post.title }}
+                                </div>
+                                <p class="mt-2 text-slate-700">
+                                {{ post.content | u.truncate(150, '...') | raw }}
+                                </p>
+                            </a>
+                        <div class="text-slate-500">
+                            Rédigé par
+                            {{ post.user.email }}
+                            le {{ post.createdAt | date('d/m/Y') }}
+                            à {{ post.createdAt | date('H:i') }}
+                            - classé dans {{ post.category.name }}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </details>               
+    {% endfor %}
+    #}
+{% endblock %}
