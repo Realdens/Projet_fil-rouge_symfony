@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,9 +28,9 @@
             <nav class="">
                 <ul class="flex flex-row justify-evenly text-teal-400 text-base">
                     <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="{{ path('accueil') }}">Accueil</a>
-                        </button>
+                        <a href="{{ path('accueil') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                        Accueil
+                        </a>
                     </li>
                     <!--
                     <li>
@@ -40,31 +40,31 @@
                     </li>
                     -->
                     <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="{{ path('app_post') }}">Articles</a>
-                        </button>
+                        <a href="{{ path('app_post') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                        Articles
+                        </a>
                     </li>
                     <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="{{ path('app_category') }}">Catégories</a>
-                        </button>
+                        <a href="{{ path('app_category') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                        Catégories
+                        </a>
                     </li>
                     {% if not is_granted("ROLE_USER") %}
                     <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="{{ path('app_register') }}">S'inscrire</a>
-                        </button>
+                        <a href="{{ path('app_register') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                        S'inscrire
+                        </a>
                     </li>
                     <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="{{ path('app_login') }}">Login</a>
-                        </button>
+                        <a href="{{ path('app_login') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                        Login
+                        </a>
                     </li>
                     {% else %}
                     <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="{{ path('app_logout') }}">Logout</a>
-                        </button>
+                        <a href="{{ path('app_logout') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
+                        Logout
+                        </a>
                     </li>
                     {% endif %}                    
                 </ul>
@@ -111,9 +111,9 @@
             <div class="bloc-reseaux text-white w-full xl:w-1/4 md:w-1/2 flex flex-col items-center">
                 <h3 class="pb-2">Réseaux sociaux</h3>
                 <ul class="flex flex-col">
-                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Facebook-gris30px.png') }}" class="mr-2">facebook</a></li>
-                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Twitter-gris30px.png') }}" class="mr-2">twitter</a></li>
-                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Youtube-gris30px.png') }}" class="mr-2">youtube</a></li>
+                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Facebook-gris30px.png') }}" class="mr-2" alt="">facebook</a></li>
+                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Twitter-gris30px.png') }}" class="mr-2" alt="">twitter</a></li>
+                    <li><a href="#" class="flex"><img src="{{ asset('Amazing/images/Icons/Youtube-gris30px.png') }}" class="mr-2" alt="">youtube</a></li>
                 </ul>
             </div>            
         </footer>

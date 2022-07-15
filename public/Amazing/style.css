@@ -1,3 +1,7 @@
 .marge-custom p {
 margin-bottom: 10px;
 }
+
+.contenu img {
+    width: 300px;
+}
