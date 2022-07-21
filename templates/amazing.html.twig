@@ -14,6 +14,17 @@
 
         <link rel="stylesheet" href="{{ asset('Amazing/style.css') }}">
 
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+
         {% block javascripts %}
            {{ encore_entry_script_tags('app') }} 
         {% endblock %}
@@ -25,6 +36,39 @@
             <div class="flex justify-center text-white font-bold text-3xl pb-5">
             amazing Sciences
             </div>
+
+            <nav class="">
+                <div class="topnav" id="myTopnav">
+                    <a href="{{ path('accueil') }}">Accueil</a>
+                    <a href="{{ path('app_post') }}">Articles</a>
+                    <a href="{{ path('app_category') }}">Catégories</a>
+                    {% if not is_granted("ROLE_USER") %}
+                    <a href="{{ path('app_register') }}">S'inscrire</a>
+                    <a href="{{ path('app_login') }}">Login</a>
+                    {% else %}
+                    <a href="{{ path('app_logout') }}">Logout</a>
+                    {% endif %}
+
+                    <!-- Dropdown menu -->
+                    <!--
+                    <div class="dropdown">
+                        <button class="dropbtn">Dropdown 
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    -->
+                    <a href="javascript:void(0);"  class="icon" onclick="myFunction()">
+                        <img src="{{ asset('Amazing/images/Icons/hamburger.png') }}"  alt="">
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Ancienne Nav
             <nav class="">
                 <ul class="flex flex-row justify-evenly text-teal-400 text-base">
                     <li>
@@ -32,13 +76,6 @@
                         Accueil
                         </a>
                     </li>
-                    <!--
-                    <li>
-                        <button class="hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
-                            <a href="#">Actualités</a>
-                        </button>
-                    </li>
-                    -->
                     <li>
                         <a href="{{ path('app_post') }}" class="button hover:bg-blue-400 hover:text-teal-700 font-bold py-0 px-2 rounded">
                         Articles
@@ -69,8 +106,16 @@
                     {% endif %}                    
                 </ul>
             </nav>
+            -->
                        
         </header>
+
+        <!-- Message flash -->
+        {% for message in app.flashes('success') %}
+                    <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-xl text-green-700 text-center mb-3" role="alert">
+                        {{ message }}
+                    </div>
+        {% endfor %}
 
         <!-- Hauteur de la page - (header + footer) -->
         <main class="min-h-[calc(100vh-328px)]">
