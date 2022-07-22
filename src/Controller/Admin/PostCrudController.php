@@ -36,7 +36,7 @@ class PostCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('content')->setFormType(CKEditorType::class),
             AssociationField::new('category'),
-         //   DateTimeField::new('created_at')->hideWhenCreating(),
+            DateTimeField::new('created_at')->hideWhenCreating(),
             TextField::new('image')->onlyOnForms(),
             BooleanField::new('active')->hideWhenCreating(),
             

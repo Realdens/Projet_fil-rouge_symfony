@@ -21,8 +21,7 @@ class Category
 
      /**
      * @gedmo\Slug(fields={"name"})
-     */
-    
+     */    
     #[ORM\Column(type: 'string', length: 120)]
     private $slug;
 

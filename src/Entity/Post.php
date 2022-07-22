@@ -56,6 +56,11 @@ class Post
         $this->comments = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->id . ' - ' . $this->title;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
