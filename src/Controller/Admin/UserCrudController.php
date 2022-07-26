@@ -28,6 +28,7 @@ class UserCrudController extends AbstractCrudController
         ];
     }
 
+    /*
     public function configureActions(Actions $actions): Actions
     {
         return $actions
@@ -35,7 +36,7 @@ class UserCrudController extends AbstractCrudController
             // Empêcher de supprimer un user
             ->disable(Action::NEW, Action::DELETE)
         ;
-    }
+    } */
 
     /*
     public function configureFields(string $pageName): iterable

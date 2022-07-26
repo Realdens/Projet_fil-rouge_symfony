@@ -49,7 +49,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'accueil');
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Articles', 'fas fa-list', Post::class);
-        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class)
+            ->setPermission('ROLE_ADMIN');            
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-comments', Comment::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
