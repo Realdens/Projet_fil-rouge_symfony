@@ -25,19 +25,17 @@
             }
         </script>
 
-        <!--
-        <script>
-            
+        <script>            
             function couleur() {
                 var url = window.location;
                 var y = document.getElementsByTagName("a");
-                if (url = "{{ path('app_post') }}") {
+                if (url = "https://amazing-sciences.herokuapp.com/articles") {
                     y[1].className += " active"; 
-                } else if (url = "{{ path('app_category') }}") {
+                } else if (url = "https://amazing-sciences.herokuapp.com/category") {
                     y[2].className += " active";
                 } else y[0].className += " active";
             }
-        </script> -->
+        </script>
 
         {% block javascripts %}
            {{ encore_entry_script_tags('app') }} 
